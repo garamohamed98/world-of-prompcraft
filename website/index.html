@@ -30,7 +30,7 @@
 
   <!-- HERO -->
   <section class="hero" id="hero">
-    <div class="hero-bg"></div>
+    <div id="hero-canvas"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <p class="hero-suptitle">A 3D Multiplayer RPG</p>
@@ -51,6 +51,8 @@
       <div class="scroll-arrow"></div>
     </div>
   </section>
+
+  <div class="section-divider"></div>
 
   <!-- ABOUT / CORE CONCEPT -->
   <section class="section" id="about">
@@ -88,6 +90,8 @@
     </div>
   </section>
 
+  <div class="section-divider dark"></div>
+
   <!-- FEATURES -->
   <section class="section section-dark" id="features">
     <div class="container">
@@ -96,6 +100,7 @@
       <div class="features-grid">
 
         <div class="feature-card">
+          <div class="card-scratch"></div>
           <div class="feature-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
           </div>
@@ -104,6 +109,7 @@
         </div>
 
         <div class="feature-card">
+          <div class="card-scratch"></div>
           <div class="feature-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
           </div>
@@ -112,6 +118,7 @@
         </div>
 
         <div class="feature-card">
+          <div class="card-scratch"></div>
           <div class="feature-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v18M3 12h18"/></svg>
           </div>
@@ -120,6 +127,7 @@
         </div>
 
         <div class="feature-card">
+          <div class="card-scratch"></div>
           <div class="feature-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
           </div>
@@ -128,6 +136,7 @@
         </div>
 
         <div class="feature-card">
+          <div class="card-scratch"></div>
           <div class="feature-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
           </div>
@@ -136,6 +145,7 @@
         </div>
 
         <div class="feature-card">
+          <div class="card-scratch"></div>
           <div class="feature-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
           </div>
@@ -146,6 +156,8 @@
       </div>
     </div>
   </section>
+
+  <div class="section-divider"></div>
 
   <!-- HOW TO PLAY -->
   <section class="section" id="how-to-play">
@@ -227,6 +239,8 @@
     </div>
   </section>
 
+  <div class="section-divider"></div>
+
   <!-- THE WORLD -->
   <section class="section section-dark" id="world">
     <div class="container">
@@ -287,6 +301,8 @@
     </div>
   </section>
 
+  <div class="section-divider"></div>
+
   <!-- SCREENSHOTS -->
   <section class="section" id="screenshots">
     <div class="container">
@@ -302,6 +318,8 @@
       </div>
     </div>
   </section>
+
+  <div class="section-divider"></div>
 
   <!-- CTA -->
   <section class="section cta-section" id="play">
@@ -336,5 +354,10 @@
   </footer>
 
   <script type="module" src="/src/main.js"></script>
+  <script type="module">
+    import { createHeroWorld } from '/src/hero-world.ts';
+    const container = document.getElementById('hero-canvas');
+    if (container) createHeroWorld(container);
+  </script>
 </body>
 </html>
