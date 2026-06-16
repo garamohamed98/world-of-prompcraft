@@ -39,7 +39,7 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-document.querySelectorAll('.feature-card, .step, .biome-card, .screenshot-card').forEach(el => {
+document.querySelectorAll('.feature-card, .step, .screenshot-card').forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(20px)';
   el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';

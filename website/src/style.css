@@ -157,7 +157,17 @@ h1, h2, h3, h4, h5 {
 }
 
 .section-dark {
-  background: #0f0f17;
+  background: #0a0a12;
+}
+
+#features .section-label,
+#features .section-title {
+  position: relative;
+  z-index: 1;
+}
+
+#features::before {
+  display: none;
 }
 
 /* --- NAV --- */
@@ -492,97 +502,126 @@ h1, h2, h3, h4, h5 {
 }
 
 /* --- FEATURES --- */
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+#features-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
 }
 
-.feature-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 8px;
-  padding: 40px 28px;
-  transition: transform 0.3s, border-color 0.3s, background 0.3s;
+#features {
   position: relative;
   overflow: hidden;
 }
 
-/* Decorative corner flourishes on cards */
-.feature-card::before,
-.feature-card::after {
-  content: '';
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.4s;
-}
-.feature-card::before {
-  top: 8px;
-  left: 8px;
-  border-top: 1px solid #c9a84c;
-  border-left: 1px solid #c9a84c;
-}
-.feature-card::after {
-  bottom: 8px;
-  right: 8px;
-  border-bottom: 1px solid #c9a84c;
-  border-right: 1px solid #c9a84c;
+#features .container {
+  position: relative;
+  z-index: 1;
 }
 
-.feature-card:hover::before,
-.feature-card:hover::after {
-  opacity: 0.5;
+#features .section-label,
+#features .section-title {
+  position: relative;
+  z-index: 1;
 }
 
-/* Subtle diagonal scratch across card top */
-.feature-card .card-scratch {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent 0%,
-    rgba(255, 255, 255, 0.03) 30%,
-    rgba(255, 255, 255, 0.08) 50%,
-    rgba(255, 255, 255, 0.03) 70%,
-    transparent 100%
-  );
-  pointer-events: none;
+#features::before {
+  display: none;
 }
 
-.feature-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(201, 168, 76, 0.3);
-  background: rgba(255, 255, 255, 0.05);
+/* ── Showcase ── */
+#features-showcase {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  margin: 0 auto;
+  min-height: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.feature-icon {
-  width: 44px;
-  height: 44px;
-  margin-bottom: 20px;
+.showcase-stage {
+  text-align: center;
+  padding: 48px 40px;
+  position: relative;
+  width: 100%;
+}
+
+.showcase-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 24px;
   color: #c9a84c;
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.feature-icon svg {
+.showcase-icon svg {
   width: 100%;
   height: 100%;
+  filter: drop-shadow(0 0 12px rgba(201, 168, 76, 0.3));
 }
 
-.feature-card h3 {
-  font-size: 1.1rem;
-  margin-bottom: 12px;
+.showcase-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
   color: #f0ece0;
+  margin-bottom: 16px;
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.feature-card p {
-  font-size: 0.9rem;
-  color: #999;
+.showcase-desc {
+  font-size: 1rem;
+  color: #bbb;
   line-height: 1.7;
+  max-width: 520px;
+  margin: 0 auto;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* ── Dots ── */
+.showcase-dots {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.showcase-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  padding: 0;
+}
+
+.showcase-dot.active {
+  background: #c9a84c;
+  border-color: #c9a84c;
+  box-shadow: 0 0 10px rgba(201, 168, 76, 0.4);
+  width: 24px;
+  border-radius: 4px;
+}
+
+.showcase-dot:hover {
+  border-color: #c9a84c;
+  background: rgba(201, 168, 76, 0.3);
+}
+
+/* ── Legacy grid hidden ── */
+.features-grid,
+.feature-card,
+.feature-icon,
+.feature-card h3,
+.feature-card p,
+.feature-card::before,
+.feature-card::after,
+.feature-card .card-scratch {
+  display: none;
 }
 
 /* --- HOW TO PLAY --- */
@@ -688,74 +727,6 @@ h1, h2, h3, h4, h5 {
 
 .example-npc .example-name {
   color: #7cb8e8;
-}
-
-/* --- BIOMES --- */
-.biomes-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 20px;
-}
-
-.biome-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 8px;
-  padding: 28px;
-  text-align: center;
-  transition: transform 0.3s, border-color 0.3s;
-  position: relative;
-  overflow: hidden;
-}
-
-.biome-card::before {
-  content: '';
-  position: absolute;
-  top: -1px;
-  left: 20%;
-  right: 20%;
-  height: 1px;
-  background: linear-gradient(to right, transparent, rgba(201, 168, 76, 0.15), transparent);
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.biome-card:hover::before {
-  opacity: 1;
-}
-
-.biome-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(201, 168, 76, 0.3);
-}
-
-.biome-visual {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: var(--biome-color);
-  opacity: 0.2;
-  margin: 0 auto 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.biome-emoji {
-  font-size: 1.6rem;
-  opacity: 1;
-}
-
-.biome-card h4 {
-  font-size: 1rem;
-  margin-bottom: 8px;
-  color: #f0ece0;
-}
-
-.biome-card p {
-  font-size: 0.85rem;
-  color: #999;
-  line-height: 1.6;
 }
 
 /* --- SCREENSHOTS --- */
@@ -922,10 +893,6 @@ h1, h2, h3, h4, h5 {
     display: flex;
   }
 
-  .features-grid {
-    grid-template-columns: 1fr;
-  }
-
   .about-grid {
     grid-template-columns: 1fr;
     gap: 32px;
@@ -933,10 +900,6 @@ h1, h2, h3, h4, h5 {
 
   .screenshots-grid {
     grid-template-columns: 1fr;
-  }
-
-  .biomes-grid {
-    grid-template-columns: repeat(2, 1fr);
   }
 
   .section {
@@ -994,10 +957,6 @@ h1, h2, h3, h4, h5 {
 }
 
 @media (max-width: 480px) {
-  .biomes-grid {
-    grid-template-columns: 1fr;
-  }
-
   .hero {
     justify-content: center;
   }
