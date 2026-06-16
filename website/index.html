@@ -31,6 +31,7 @@
   <!-- HERO -->
   <section class="hero" id="hero">
     <div id="hero-canvas"></div>
+    <div id="hero-showcase-container"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <p class="hero-suptitle">A 3D Multiplayer RPG</p>
@@ -356,8 +357,13 @@
   <script type="module" src="/src/main.js"></script>
   <script type="module">
     import { createHeroWorld } from '/src/hero-world.ts';
-    const container = document.getElementById('hero-canvas');
-    if (container) createHeroWorld(container);
+    const bg = document.getElementById('hero-canvas');
+    if (bg) createHeroWorld(bg);
+  </script>
+  <script type="module">
+    import { createHeroShowcase } from '/src/hero-showcase.ts';
+    const fg = document.getElementById('hero-showcase-container');
+    if (fg) createHeroShowcase(fg);
   </script>
 </body>
 </html>

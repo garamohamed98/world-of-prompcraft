@@ -262,7 +262,7 @@ h1, h2, h3, h4, h5 {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   position: relative;
   overflow: hidden;
   padding: 120px 24px 80px;
@@ -296,22 +296,43 @@ h1, h2, h3, h4, h5 {
   overflow: hidden;
 }
 
+#hero-showcase-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 55%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+}
+
 .hero-overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
   pointer-events: none;
   background:
-    radial-gradient(ellipse at center, transparent 40%, rgba(10, 10, 15, 0.5) 100%),
-    linear-gradient(to top, rgba(10, 10, 15, 0.45) 0%, transparent 30%, rgba(10, 10, 15, 0.2) 100%);
+    linear-gradient(
+      to right,
+      rgba(10, 10, 15, 0.92) 0%,
+      rgba(10, 10, 15, 0.35) 40%,
+      transparent 60%
+    ),
+    linear-gradient(
+      to top,
+      rgba(10, 10, 15, 0.4) 0%,
+      transparent 30%
+    );
 }
 
 .hero-content {
   position: relative;
-  z-index: 2;
-  text-align: center;
-  max-width: 800px;
+  z-index: 3;
+  text-align: left;
+  max-width: 380px;
   padding-bottom: 40px;
+  margin-left: 6%;
 }
 
 .hero-suptitle {
@@ -321,38 +342,44 @@ h1, h2, h3, h4, h5 {
   text-transform: uppercase;
   color: #dbb95c;
   margin-bottom: 20px;
+  text-align: left;
 }
 
 .hero-title {
-  font-size: clamp(2.5rem, 8vw, 5.5rem);
+  font-size: clamp(1.8rem, 5vw, 3.5rem);
   font-weight: 900;
-  letter-spacing: 6px;
+  letter-spacing: 4px;
   color: #ffffff;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .hero-tagline {
   font-family: 'Cinzel', serif;
-  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-size: clamp(0.85rem, 1.5vw, 1.1rem);
   color: #f0d060;
-  margin-bottom: 24px;
-  letter-spacing: 2px;
+  margin-bottom: 20px;
+  letter-spacing: 1.5px;
 }
 
 .hero-desc {
-  font-size: 1.05rem;
+  font-size: 0.9rem;
   color: #e8e4d8;
-  max-width: 600px;
-  margin: 0 auto 40px;
-  line-height: 1.7;
+  max-width: 360px;
+  margin: 0 0 32px;
+  line-height: 1.6;
   font-weight: 500;
 }
 
 .hero-actions {
   display: flex;
-  gap: 16px;
-  justify-content: center;
+  gap: 12px;
+  justify-content: flex-start;
   flex-wrap: wrap;
+}
+
+.hero-actions .btn {
+  padding: 10px 22px;
+  font-size: 0.75rem;
 }
 
 .hero-scroll {
@@ -360,7 +387,7 @@ h1, h2, h3, h4, h5 {
   bottom: 32px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 2;
+  z-index: 3;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -916,8 +943,44 @@ h1, h2, h3, h4, h5 {
     padding: 60px 0;
   }
 
+  #hero-showcase-container {
+    display: none;
+  }
+
+  .hero {
+    justify-content: center;
+  }
+
+  .hero-content {
+    text-align: center;
+    max-width: 100%;
+    margin-left: 0;
+  }
+
+  .hero-suptitle {
+    text-align: center;
+  }
+
+  .hero-desc {
+    margin: 0 auto 40px;
+    text-align: center;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
   .hero-title {
     letter-spacing: 3px;
+  }
+
+  .hero-overlay {
+    background:
+      linear-gradient(
+        to top,
+        rgba(10, 10, 15, 0.6) 0%,
+        transparent 40%
+      );
   }
 
   .example-box {
@@ -933,6 +996,24 @@ h1, h2, h3, h4, h5 {
 @media (max-width: 480px) {
   .biomes-grid {
     grid-template-columns: 1fr;
+  }
+
+  .hero {
+    justify-content: center;
+  }
+
+  .hero-content {
+    text-align: center;
+    margin-left: 0;
+  }
+
+  .hero-suptitle {
+    text-align: center;
+  }
+
+  .hero-desc {
+    margin: 0 auto 40px;
+    text-align: center;
   }
 
   .hero-actions {
