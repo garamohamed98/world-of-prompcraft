@@ -1024,6 +1024,146 @@ h1, h2, h3, h4, h5 {
   margin-top: 8px;
 }
 
+/* --- TEAM MODAL --- */
+.team-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+}
+
+.team-modal.open {
+  display: flex;
+}
+
+.team-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+}
+
+.team-modal-content {
+  position: relative;
+  background: #12121a;
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  border-radius: 12px;
+  padding: 48px 40px 40px;
+  max-width: 640px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  text-align: center;
+}
+
+.team-modal-content h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.4rem;
+  color: #c9a84c;
+  margin-bottom: 32px;
+}
+
+.team-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 1.6rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px 8px;
+  transition: color 0.2s;
+}
+
+.team-modal-close:hover {
+  color: #c9a84c;
+}
+
+.team-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.team-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 24px;
+  text-align: center;
+}
+
+.team-card-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #c9a84c;
+  color: #0a0a0f;
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+}
+
+.team-card h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  color: #e0dcd0;
+  margin-bottom: 2px;
+}
+
+.team-card > p {
+  font-size: 0.75rem;
+  color: #555;
+  margin-bottom: 4px;
+}
+
+.team-role {
+  display: block;
+  font-size: 0.8rem;
+  color: #888;
+  margin-bottom: 12px;
+}
+
+.team-links a {
+  display: inline-block;
+  font-size: 0.8rem;
+  color: #c9a84c;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.team-links a:hover {
+  opacity: 0.7;
+}
+
+.team-thanks {
+  margin-top: 28px;
+  font-size: 0.85rem;
+  color: #888;
+  line-height: 1.6;
+}
+
+.team-thanks strong {
+  color: #e0dcd0;
+}
+
+.footer-built {
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.footer-built:hover {
+  color: #c9a84c;
+}
+
 /* --- UTILITY --- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

@@ -232,13 +232,51 @@
       <div class="footer-inner">
         <div class="footer-brand">WORLD OF PROMPTCRAFT</div>
         <div class="footer-links">
-          <a href="https://github.com/anomalyco/world-of-promptcraft" target="_blank">GitHub</a>
-          <a href="https://opencode.ai" target="_blank">Built with opencode</a>
+          <span class="footer-built" id="teamTrigger">Built with Promptcraft Team</span>
         </div>
         <div class="footer-copy">No buttons. No menus. Just your imagination.</div>
       </div>
     </div>
   </footer>
+
+  <!-- TEAM MODAL -->
+  <div class="team-modal" id="teamModal">
+    <div class="team-modal-backdrop" id="teamModalBackdrop"></div>
+    <div class="team-modal-content">
+      <button class="team-modal-close" id="teamModalClose">&times;</button>
+      <h2>The Promptcraft Team</h2>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-card-avatar">EP</div>
+          <h3>Eduardo Pertierra</h3>
+          <p>Eduardo Pertierra</p>
+          <span class="team-role">founder &amp; creator</span>
+          <div class="team-links">
+            <a href="https://linkedin.com/in/eduardopertierra" target="_blank">in · LinkedIn</a>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-card-avatar">RP</div>
+          <h3>Rafael Pernil</h3>
+          <p>Rafael Pernil</p>
+          <span class="team-role">agentic visuals architect &amp; infrastructure</span>
+          <div class="team-links">
+            <a href="https://linkedin.com/in/rafaelpernil" target="_blank">in · LinkedIn</a>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-card-avatar">IG</div>
+          <h3>Irene Granados</h3>
+          <p>Irene Granados</p>
+          <span class="team-role">agentic design engineer</span>
+          <div class="team-links">
+            <a href="https://linkedin.com/in/irenegranados" target="_blank">in · LinkedIn</a>
+          </div>
+        </div>
+      </div>
+      <p class="team-thanks">With thanks to <strong>Mohamed Gara</strong> and everyone who contributed.</p>
+    </div>
+  </div>
 
   <script type="module" src="/src/main.js"></script>
   <script type="module">
@@ -260,6 +298,18 @@
     import { createFeaturesShowcase } from '/src/features-showcase.js';
     const showcase = document.getElementById('features-showcase');
     if (showcase) createFeaturesShowcase(showcase);
+  </script>
+  <script>
+    const trigger = document.getElementById('teamTrigger');
+    const modal = document.getElementById('teamModal');
+    const backdrop = document.getElementById('teamModalBackdrop');
+    const closeBtn = document.getElementById('teamModalClose');
+    if (trigger && modal) {
+      trigger.addEventListener('click', () => modal.classList.add('open'));
+      const close = () => modal.classList.remove('open');
+      if (closeBtn) closeBtn.addEventListener('click', close);
+      if (backdrop) backdrop.addEventListener('click', close);
+    }
   </script>
 </body>
 </html>
