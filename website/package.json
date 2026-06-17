@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "three": "^0.170.0",
-    "three-mesh-bvh": "^0.9.10"
+    "three-mesh-bvh": "^0.9.10",
+    "world-of-promptcraft-website": "link:"
   }
 }

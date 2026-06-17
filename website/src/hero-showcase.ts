@@ -121,33 +121,42 @@ export function createHeroShowcase(container: HTMLElement): () => void {
   function loadNext() {
     if (st.group) {
       scene.remove(st.group);
+      st.group = null;
     }
-    const type = SHOWCASE_TYPES[index % SHOWCASE_TYPES.length];
-    index++;
-    if (!hasMesh(type)) { loadNext(); return; }
+    for (let attempt = 0; attempt < SHOWCASE_TYPES.length; attempt++) {
+      const type = SHOWCASE_TYPES[index % SHOWCASE_TYPES.length];
+      index++;
+      if (!hasMesh(type)) continue;
+      let obj: THREE.Object3D | undefined;
+      try {
+        obj = buildMesh(type, { position: new THREE.Vector3(0, 0, 0), scale: 1 });
+      } catch (e) {
+        console.error('hero-showcase: buildMesh failed for', type, e);
+        continue;
+      }
+      if (!obj || !obj.isGroup) continue;
 
-    const obj = buildMesh(type, { position: new THREE.Vector3(0, 0, 0), scale: 1 });
-    if (!obj || !(obj instanceof THREE.Group)) { loadNext(); return; }
+      const box = new THREE.Box3().setFromObject(obj);
+      const size = box.getSize(new THREE.Vector3());
+      const maxDim = Math.max(size.x, size.y, size.z);
+      const targetSize = 2.2;
+      const s = (maxDim > targetSize || maxDim < 1)
+        ? targetSize / Math.max(maxDim, 0.1)
+        : 1;
 
-    const box = new THREE.Box3().setFromObject(obj);
-    const size = box.getSize(new THREE.Vector3());
-    const maxDim = Math.max(size.x, size.y, size.z);
-    const targetSize = 2.2;
-    const s = (maxDim > targetSize || maxDim < 1)
-      ? targetSize / Math.max(maxDim, 0.1)
-      : 1;
+      const center = box.getCenter(new THREE.Vector3());
+      obj.position.set(-center.x * s, 1.0 - center.y * s, -center.z * s);
 
-    const center = box.getCenter(new THREE.Vector3());
-    obj.position.set(-center.x * s, 1.0 - center.y * s, -center.z * s);
+      obj.scale.set(0.001, 0.001, 0.001);
+      scene.add(obj);
 
-    obj.scale.set(0.001, 0.001, 0.001);
-    scene.add(obj);
-
-    st.group = obj;
-    st.phase = Phase.Enter;
-    st.timer = 0;
-    st.targetScale = s;
-    st.yBase = 1.0 - center.y * s;
+      st.group = obj;
+      st.phase = Phase.Enter;
+      st.timer = 0;
+      st.targetScale = s;
+      st.yBase = 1.0 - center.y * s;
+      return;
+    }
   }
 
   let time = 0;

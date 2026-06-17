@@ -12,6 +12,7 @@ venv/
 
 # Build
 client/dist/
+website/dist/
 *.egg-info/
 
 # Coverage (test artifacts — generated locally and in CI, never committed)
