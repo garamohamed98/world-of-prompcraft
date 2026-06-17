@@ -20,7 +20,7 @@
         <a href="#features">Features</a>
         <a href="#how-to-play">How to Play</a>
         <a href="#world">The World</a>
-        <a href="#play" class="nav-cta">Play Now</a>
+        <a href="#interest" class="nav-cta">I want to play</a>
       </div>
       <button class="nav-toggle" id="navToggle" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -43,7 +43,7 @@
         <strong>Your words are your controller.</strong>
       </p>
       <div class="hero-actions">
-        <a href="#play" class="btn btn-primary">I want to play</a>
+        <a href="#interest" class="btn btn-primary">I want to play</a>
       </div>
     </div>
     <div class="hero-scroll">
@@ -206,38 +206,23 @@
 
   <div class="section-divider"></div>
 
-  <!-- CTA -->
-  <section class="section cta-section" id="play">
+  <!-- INTEREST FORM -->
+  <section class="section cta-section" id="interest">
     <div class="cta-bg"></div>
     <div class="container">
       <div class="cta-content">
-        <h2 class="cta-title">Ready to Write Your Legend?</h2>
+        <h2 class="cta-title">Coming soon</h2>
         <p class="cta-text">
-          No download. No install. No button-mashing. Just you, your keyboard, and a world
-          that responds to every word you type.
+          World of Promptcraft is still in the forge. Leave your email and we'll
+          let you know the moment it's ready to play.
         </p>
-        <div class="cta-buttons">
-          <a href="https://play.worldofpromptcraft.com" class="btn btn-primary btn-lg" target="_blank">I want to play</a>
-          <a href="https://github.com/anomalyco/world-of-promptcraft" class="btn btn-secondary btn-lg" target="_blank">View on GitHub</a>
-        </div>
+        <form class="interest-form" id="interestForm">
+          <input type="text" name="name" placeholder="Your name" required />
+          <input type="email" name="email" placeholder="Your email" required />
+          <textarea name="message" placeholder="What excites you most?" rows="3"></textarea>
+          <button type="submit" class="btn btn-primary btn-lg">Notify me</button>
+        </form>
       </div>
-    </div>
-  </section>
-
-  <!-- INTEREST FORM -->
-  <section class="section section-dark" id="interest">
-    <div class="container">
-      <div class="section-label">Stay in Touch</div>
-      <h2 class="section-title">Interested? Let us know</h2>
-      <p class="section-desc" style="text-align:center;max-width:600px;margin:0 auto 2rem;color:var(--muted);">
-        Leave your details and we'll keep you updated on the playtest launch.
-      </p>
-      <form class="interest-form" id="interestForm">
-        <input type="text" name="name" placeholder="Your name" required />
-        <input type="email" name="email" placeholder="Your email" required />
-        <textarea name="message" placeholder="What excites you most about World of Promptcraft?" rows="4"></textarea>
-        <button type="submit" class="btn btn-primary btn-lg">Notify me</button>
-      </form>
     </div>
   </section>
 
